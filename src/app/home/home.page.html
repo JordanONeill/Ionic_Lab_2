@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      War Movies
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">War Movies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="errorMessage" class="ion-padding">
+    {{ errorMessage }}
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let movie of movies">
+      <ion-thumbnail slot="start">
+        <img [src]="movie.Poster" alt="Movie Poster" *ngIf="movie.Poster !== 'N/A'">
+        <div *ngIf="movie.Poster === 'N/A'" class="no-poster">No Poster</div>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ movie.Title }}</h2>
+        <p>{{ movie.Year }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
